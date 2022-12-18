@@ -39,7 +39,7 @@ nav ul{
   gap: .8rem;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: 100%;
 }
 
@@ -63,6 +63,7 @@ color: black;
 main {
   max-width: 1200px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   margin: 0 auto;
 }
@@ -115,14 +116,15 @@ main {
 
 #projetos {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   justify-content: left;
   gap: .4rem;
 }
 
 .projeto_card {
-  width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   margin: 2rem auto;
   padding: .8rem;
@@ -158,10 +160,10 @@ main {
     transition: .4s;
 }
 
-
 .card_cont {
   margin-top: .8rem;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -179,14 +181,31 @@ i.spin {
 }
 
 .card_cont a {
-  text-align: center !important;
+  text-align: center;
+  display: flex;
+  align-self: center;
 }
 
+button {
+  width: 50px;
+  border-radius: 40px;
+  background-color: #555;
+  margin: 1rem;
+  padding: .4rem .8rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
 #social {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin: auto;
   /* background: linear-gradient(180deg, rgba(255, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%); */
   padding-bottom: 1.2rem;
-  border-radius: 30px;
 }
 
 #social p {
@@ -201,7 +220,7 @@ i.spin {
   justify-content: center;
   height: 100px;
   /* background-color: #6d6d6d; */
-  gap: 4rem;
+  gap: 2rem;
 }
 
 #social_links ul {
