@@ -163,6 +163,21 @@ cardBtnCalcImcV2.addEventListener("click", (e) => {
 
 // ------------------------------------------------------------------------------
 
+// Contagem regressiva
+const cardBtnContagem = document.querySelector("#card_contagem i");
+const cardContagem = document.querySelector("#cont_contagem");
+
+const abreFechaContagem = (e) => {
+  cardBtnContagem.classList.toggle("spin");
+  cardContagem.classList.toggle("esconde");
+};
+
+cardBtnContagem.addEventListener("click", (e) => {
+  abreFechaContagem();
+});
+
+// ------------------------------------------------------------------------------
+
 // API clima
 const cardBtnClima = document.querySelector("#card_clima i");
 const cardClima = document.querySelector("#cont_clima");
