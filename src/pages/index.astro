@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sobre from "../components/Sobre.astro";
+import Projetos from "../components/Projetos.astro";
+import ThemeIcon from "../components/ThemeIcon.astro";
+import "../styles/global.css";
+---
+
+<Layout title="Osmar (Mazinho) | Eng. Software & Gestão 4.0">
+	<ThemeIcon />
+	<main
+		class="bg-white dark:bg-slate-900 min-h-screen transition-colors duration-500"
+	>
+		<Sobre />
+		<Projetos />
+	</main>
+</Layout>

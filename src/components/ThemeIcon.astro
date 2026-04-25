@@ -1,0 +1,80 @@
+---
+
+---
+
+<button
+  id="themeToggle"
+  class="fixed top-4 right-4 p-3 rounded-xl bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-lg hover:scale-110 transition-all z-50 group"
+>
+  <svg
+    class="sun w-6 h-6 text-orange-500 hidden dark:block group-hover:rotate-45 transition-transform"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 0A9 9 0 1111.242 11.242 9 9 0 0112 3v1z"
+    ></path>
+  </svg>
+  <svg
+    class="moon w-6 h-6 text-blue-600 block dark:hidden group-hover:-rotate-12 transition-transform"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  const setupTheme = () => {
+    const themeToggle = document.getElementById("themeToggle");
+
+    // Refatoração: Adicionamos o tipo de retorno explicitamente
+    const getTheme = (): "light" | "dark" => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        // O 'as' informa ao TS que confiamos que o valor do storage é um dos nossos temas
+        return localStorage.getItem("theme") as "light" | "dark";
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    };
+
+    // Refatoração: O parâmetro 't' agora é restrito aos dois valores possíveis
+    const applyTheme = (t: "light" | "dark") => {
+      if (t === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", t);
+    };
+
+    // Agora a chamada é direta e elegante, pois getTheme() nunca retornará null
+    applyTheme(getTheme());
+
+    // Adiciona o evento de clique
+    themeToggle?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      applyTheme(isDark ? "light" : "dark");
+    });
+  };
+
+  // Roda no carregamento inicial
+  setupTheme();
+
+  // Roda toda vez que o Astro troca de página (importante para o futuro)
+  document.addEventListener("astro:after-swap", setupTheme);
+</script>
