@@ -27,7 +27,13 @@ const { title } = Astro.props;
     		© 2026 Osmar (Mazinho) — Diretor & Engenheiro de Software
   		</p>
   
-  		<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmazinhorj.github.io&count_bg=%232563EB&title_bg=%231E293B&icon=&icon_color=%23E7E7E7&title=Visitas&edge_flat=false" alt="Contador de Visitas" class="h-5" />
+		<img 
+  			src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://mazinhorj.github.io&count_bg=%232563EB&title_bg=%231E293B&title=Visitas" 
+ 			alt="Contador de Visitas" 
+  			loading="eager"
+  			decoding="async"
+  			class="h-5" 
+		/>	
 	</footer>
 </html>
 
