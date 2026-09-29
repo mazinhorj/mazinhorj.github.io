@@ -5,7 +5,7 @@ const projetos = [
         descricao:
             "Implementação de processos digitais e reestruturação administrativa na Escola Municipal Maria Clara Machado em Duque de Caxias, resultando em melhorias significativas na eficiência e satisfação da comunidade escolar.",
         tags: ["Gestão", "Liderança", "Inovação"],
-        link: "https://www.eduque.smeduquedecaxias.rj.gov.br/MapaCoordenadoria/detEscola.do?codUnidade=607366",
+        link: "https://www.eduque.smeduquedecaxias.rj.gov.br/",
     },
     {
         titulo: "PRISMA - ANP",
@@ -18,7 +18,7 @@ const projetos = [
         titulo: "Bot WhatsApp • Jornal do Médico",
         descricao:
             "Automação inteligente de atendimento e entrega de edições digitais de revistas via WhatsApp, orquestrada com n8n para engajamento e distribuição ágil.",
-        tags: ["n8n", "WhatsApp API", "Automação", "Workflows"],
+        tags: ["N8N", "WhatsApp API", "Automação", "Workflows"],
         link: "https://jornaldomedico.com.br/",
     },
     {
@@ -31,14 +31,14 @@ const projetos = [
 ];
 ---
 
-<section class="max-w-4xl mx-auto px-6 py-16">
+<section class="max-w-6xl mx-auto px-6 py-16">
     <div class="flex justify-between items-end mb-10">
         <div>
             <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-2">
                 Projetos & Atuação
             </h2>
             <p class="text-gray-600 dark:text-slate-400">
-                Destaques da união entre gestão e tecnologia e soluções desenvolvidas pela OMSOFTWARE&lt;ॐ/&gt;.
+                Destaques da união entre liderança, arquitetura e tecnologia.
             </p>
         </div>
 
@@ -74,36 +74,120 @@ const projetos = [
                 >
             </a>
         </div>
+
+        <div class="flex gap-3 items-center">
+            <!-- Botões manuais opcionais -->
+            <button
+                id="prev-btn"
+                aria-label="Projeto anterior"
+                class="p-2 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors text-gray-700 dark:text-slate-300"
+            >
+                ←
+            </button>
+            <button
+                id="next-btn"
+                aria-label="Próximo projeto"
+                class="p-2 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors text-gray-700 dark:text-slate-300"
+            >
+                →
+            </button>
+        </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {
-            projetos.map((proj) => (
-                <div class="group bg-white dark:bg-slate-800/40 p-8 rounded-3xl border border-gray-100 dark:border-slate-700/50 shadow-xl shadow-gray-200/50 dark:shadow-none hover:border-blue-500 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors">
-                            {proj.titulo}
-                        </h3>
-                        <p class="text-sm leading-relaxed text-gray-600 dark:text-slate-400 mb-6">
-                            {proj.descricao}
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            {proj.tags.map((tag) => (
-                                <span class="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 rounded-md group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
-                                    {tag}
-                                </span>
-                            ))}
+    <!-- Container do Carrossel -->
+    <div id="carousel-track" class="overflow-x-auto no-scrollbar scroll-smooth">
+        <div class="flex gap-6 pb-4">
+            {
+                projetos.map((proj) => (
+                    <div class="carousel-item flex-none w-full md:w-[calc(33.333%-1rem)] group bg-white dark:bg-slate-800/40 p-8 rounded-3xl border border-gray-100 dark:border-slate-700/50 shadow-xl shadow-gray-200/50 dark:shadow-none hover:border-blue-500 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors">
+                                {proj.titulo}
+                            </h3>
+                            <p class="text-sm leading-relaxed text-gray-600 dark:text-slate-400 mb-6">
+                                {proj.descricao}
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                {proj.tags.map((tag) => (
+                                    <span class="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 rounded-md group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
+                        <a
+                            href={proj.link}
+                            target="_blank"
+                            class="inline-flex items-center text-xs font-black uppercase tracking-tighter text-blue-600 dark:text-blue-400 group-hover:gap-2 transition-all"
+                        >
+                            Ver Detalhes <span>→</span>
+                        </a>
                     </div>
-                    <a
-                        href={proj.link}
-                        target="_blank"
-                        class="inline-flex items-center text-xs font-black uppercase tracking-tighter text-blue-600 dark:text-blue-400 group-hover:gap-2 transition-all"
-                    >
-                        Ver Detalhes <span>→</span>
-                    </a>
-                </div>
-            ))
-        }
+                ))
+            }
+        </div>
     </div>
 </section>
+
+<style>
+    /* Oculta a barra de rolagem mantendo a funcionalidade de scroll */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+
+<script>
+    const track = document.getElementById("carousel-track");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    if (track) {
+        const getStep = () => {
+            const item = track.querySelector(".carousel-item") as HTMLElement;
+            return item ? item.offsetWidth + 24 : 320; // 24px é o gap-6
+        };
+
+        const scrollNext = () => {
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            if (track.scrollLeft >= maxScroll - 10) {
+                track.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                track.scrollBy({ left: getStep(), behavior: "smooth" });
+            }
+        };
+
+        const scrollPrev = () => {
+            if (track.scrollLeft <= 0) {
+                track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+            } else {
+                track.scrollBy({ left: -getStep(), behavior: "smooth" });
+            }
+        };
+
+        // Rotação Automática (a cada 4 segundos)
+        let interval = setInterval(scrollNext, 4000);
+
+        const resetInterval = () => {
+            clearInterval(interval);
+            interval = setInterval(scrollNext, 4000);
+        };
+
+        // Pausa quando o usuário coloca o mouse sobre o carrossel
+        track.addEventListener("mouseenter", () => clearInterval(interval));
+        track.addEventListener("mouseleave", () => resetInterval());
+
+        nextBtn?.addEventListener("click", () => {
+            scrollNext();
+            resetInterval();
+        });
+
+        prevBtn?.addEventListener("click", () => {
+            scrollPrev();
+            resetInterval();
+        });
+    }
+</script>
